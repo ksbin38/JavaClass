@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="KH스마트캠퍼스,html,css,자바스크립트" />
+        <meta name="description" content="사이트 검색에 노출될 사이트의 요약 구문" />
+        <meta name="author" content="제작자명" />
+        <title>insert title here</title>
+    </head>
+    <body>
+        <!-- 웹 로고, 메뉴 표기 영역-->
+        <header>
+            <!--h1태그는 웹 로고에 적용-->
+            <h1><a href="">로고</a></h1>
+            <!-- 웹 메뉴 표기-->
+             <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+             </nav>
+        </header>
+        <!-- 웹 주 내용-->
+        <main>
+            <!--콘텐츠 출력-->
+            <!-- 독립된 내용 출력-->
+            <article></article>
+            <!-- 비슷한 콘텐츠를 여러 개 묶는 용도-->
+            <section></section>
+        </main>
+        <!-- 웹 소유 정보-->
+        <!-- 제목 표기 h1 ~ h6 : heading -->
+        <h1>h1 태그</h1>
+        <h2>h2 태그</h2>
+        <h3>h3 태그</h3>
+        <h4>h4 태그</h4>
+        <h5>h5 태그</h5>
+        <h6>h6 태그</h6>
+        <!-- 문단 표기 html 코드 &nbsp; 는 공백을 표기한다.-->
+        <p>-- 테이블 스페이스 생성 : 물리적 저장소 및 관리 특성 정의<br/>
+            br 태그는 개행을 위한 태그<br/>
+            CREATE TABLESPACE SQLD_DATA&nbsp;
+            
+            DATAFILE 'C:\orcl\SQLD_DATA.dbf' SIZE 4G<br/>
+            <!-- blockquote 태그는 인용구를 표기한다. -->
+            <blockquote>AUTOEXTEND ON NEXT 512M MAXSIZE UNLIMITED</blockquote>
+            
+            LOGGING</p>
+            <!-- 강조 태그 strong, b -->
+             <strong>아주 중요한 내용일 때 사용</strong>
+             <b>단순 디자인적인 강조 표기</b>
+            <!-- 텍스트 기울이기 em, i -->
+             <em>특정 부분을 강조하고 기울여 쓴다.</em>
+             <i>디자인상 기울여 쓴다.</i>
+             <!-- small: 주변 글자보다 작게 쓸 때 -->
+             <P>껍질에 <small>붉은 빛</small>이 돌아 <b>레드향</b>이라 불린다.</P>
+             <p>레드향은 <em>한라봉과 귤을 교배</em>한 것으로<br/>
+                일반 귤보다 2~3배 크고, 과육이 붉고 동동하다.</p>
+                <p>비타민C와 비타민P가 풍부해<br/>
+                    <strong>혈액순환, 감기예방</strong> 등에 좋은 것으로 알려져 있다.
+                </p>
+            <!-- 줄임말을 표시할 때 title 속성에 내용을 표기한다. -->
+            <abbr title="Internet of Things">IoT</abbr>
+            <!-- 웹문서나 포스트에 참고내용 표기 -->
+            <p>내가 경험한 가장 흥미진진한 일은 누군가를 만나는 일이다 - 영화, <cite>'비포선셋'</cite> 중에서</p>
+
+            <!-- 코드를 html에 표기해야할 때 사용한다. -->
+            <p><code>console.log(1);</code></p>
+            <p>
+                <!-- &lt; : less then "<", &gt; : greater then ">" -->
+                <code>
+                    &lt;script&gt;console.log(1);&lt;/script&gt;
+                    &lt;div&gt;div 태그&lt;/div&gt;
+                </code>
+            </p>
+
+            <!-- sub: 아래첨자, sup: 위첨자 -->
+             <p>물의 화학식은 H<sub>2</sub>O 입니다.</p>
+             <p>E = mc<sup>2</sup></p>
+
+            
+            <!-- s: 취소선 -->
+             <p><s>34,000원</s> 19,000원</p>
+            <!-- u: 밑줄 -->
+             <p>텍스트에 <u>밑줄</u>을 그어봅시다.</p>
+            <!-- ins: 새로운 내용을 삽입할 때 (u 태그랑 비슷해서 거의 안씀) -->
+             <p>새로운 <ins>내용을</ins> 삽입했다.</p>
+            <!-- del: 내용 삭제 (s 태그랑 비슷, 거의 안씀)-->
+             <p>내용을 <del>삭재했다.</del></p>
+        <footer></footer>
+    </body>
+</html>
