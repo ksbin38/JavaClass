@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="KH스마트캠퍼스,html,css,자바스크립트" />
+        <meta name="description" content="사이트 검색에 노출될 사이트의 요약 구문" />
+        <meta name="author" content="제작자명" />
+        <title>insert title here</title>
+    </head>
+    <body>
+        <h2>코끼리를 냉장고에 넣는 법</h2>
+        <!-- 순서가 있는 목록 -->
+        <ol type="1" start="3">
+            <li>냉장고 문을 연다</li>
+            <li>코끼리를 넣는다</li>
+            <li>냉장고 문을 닫는다</li>
+        </ol>
+        <!-- 순서와 상관없는 목록 -->
+        <ul>
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+        </ul>
+        <!-- ul>li*3>a >>>> ul태그에 li태그 3개+a태그도 같이 생성 -->
+        <ul>
+            <li><a href="">alt+shift+드래그</a></li>
+            <li><a href="">alt+shift+드래그</a></li>
+            <li><a href="">alt+shift+드래그</a></li>
+        </ul>
+        <dl>
+            <dt>견과류 1포</dt>
+            <dd>호두 2조각</dd>
+            <dd>아몬드 10조각</dd>
+            <dd>건포도 4조각</dd>
+        </dl>
+        <style>
+            table {width: 100%}
+            table thead tr th {background: yellow}
+            table body th {background: green}
+            table td {border: 1px solid red}
+        </style>
+        <table>
+            <!-- caption: 표의 제목, 표의 폭이 좁고 캡션이 길면 제목이 세로로 나올 수 있다.(표의 제목은 표의 폭에 맞춰서 출력됨)-->
+            <caption>표의 제목</caption>
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>숫자1</th>
+                    <th>숫자2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>테이블 행의 헤더</th>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>테이블 행의 헤더</th>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">테이블 요약 정보</td>
+                </tr>
+            </tfoot>
+        </table>
+        <table>
+            <caption>실습</caption>
+            <!-- colgroup으로 열을 묶고 col로 열마다 스타일 지정 -->
+            <colgroup>
+                <col style="width: 500px;"/>
+                <col style="background: yellow"/>
+                <col />
+                <col />
+                <col />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>header1</th>
+                    <th>header2</th>
+                    <th>header3</th>
+                    <th>header4</th>
+                    <th>header5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3"></td>
+                    <td>O</td>
+                    <td colspan="3">O</td>>
+                </tr>
+                <tr>
+                    <td>O</td>
+                    <td>O</td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>O</td>
+                    <td>O</td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td colspan="5">O</td>
+                </tr>
+                <tr>
+                    <td>O</td>
+                    <td>O</td>
+                    <td rowspan="2"></td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>O</td>
+                    <td>O</td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- GIF, PNG, JPG, JPEG, BMP, WEBP -->
+        <img src="/asset/img/image.png" alt="이미지 안 나올 시 대체할 텍스트" style="max-width: 100%;" />
+        <object data="/asset/pdf/sample.pdf" width="600" height="500"></object>
+        <!-- video에 autoplay는 poster(썸네일) 적용이 안된다. loop를 설정하면 영상이 종료되어도 다시 알아서 재생 -->
+        <video src="/asset/mp4/video.mp4" controls muted preload="auto" width="500" poster="/asset/img/image.png"></video>
+
+        <a href="/sub.html">서브페이지</a>
+
+        <form action="" method="">
+            <fieldset>
+                <legend>사용자 정보</legend>
+                <ul>
+                    <li>
+                        <label for="user">아이디</label>
+                        <input type="text" id="user">
+                    </li>
+                    <li>
+                        <label for="umail">이메일</label>
+                        <input type="email" id="umail">
+                    </li>
+                    <li>
+                        <label for="pwd1">비밀번호</label>
+                        <input type="password" id="pwd1">
+                    </li>
+                    <li>
+                        <label for="pwd2">비밀번호 확인</label>
+                        <input type="password" id="pwd2">
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>이벤트와 새로운 소식</legend>
+                <input type="radio" name="mailing" id="mailing_y">
+                <label for="mailing_y">메일 수신</label>
+                <input type="radio" name="mailing" id="mailing_n" checked>
+                <label for="mailing_n">메일 수신 안 함</label>
+            </fieldset>
+            <div id="buttons">
+                <input type="submit" value="가입하기">
+                <input type="reset" value="취소">
+            </div>
+            <fieldset>
+                <legend>로그인</legend>
+                <label for="userID">아이디</label>
+                <!-- input > size: 한글기준 몇글자 들어갈 수 있는 크기인지 / > value설정: 입력하지 않아도 기본적으로 나오는 값 -->
+                <input type="text" id="userID" size="5" value="123" maxlength="10">
+                <label for="userPW">비밀번호</label>
+                <input type="password" id="userPW"> 
+                <!-- <input type="checkbox" name="chk1" id="chk1" value="체크1번" checked />
+                <label for="chk1">체크 1</label> -->
+
+                <label for="rd1">약관 동의</label>
+                <input type="radio" name="rd" id="rd1" value="동의" />
+                <label for="rd2">약관 미동의</label>
+                <input type="radio" name="rd" id="rd2" value="미동의" />
+
+                <label><input type="checkbox">체크해보자</label>
+            </fieldset>
+            <body>
+                <form id="myForm">
+                    <ul>
+                        <li><input type="text"></li>
+                        <li><input type="number" min="10" max="15" step="2" value="14"></li>
+                        <li><input type="range" min="10" max="15" step="2" value="14"></li>
+                    </ul>
+                    <ul>
+                        <li><input id="date" type="date"></li>
+                        <li><input id="month" type="month"></li>
+                        <li><input id="week" type="week"></li>
+                        <li><input id="time" type="time"></li>
+                        <li><input id="datetime-local" type="datetime-local"></li>
+                        <li><input id="file" type="file"></li>
+                    </ul>
+                    <button id="submit" type="submit">확인</button>
+                    <button id="reset" type="reset">초기화</button>
+                </form>
+
+                <form>
+                    <div>
+                        <input type="text" placeholder="아이디를 입력하세요." >
+                        <p>아이디를 입력하세요.</p>
+                        <input type="text" placeholder="비밀번호를 입력하세요." >
+                        <p>비밀번호를 입력하세요.</p>
+                    </div>
+                    <div>
+                        <textarea style="width: 170px; height: 50px;"></textarea>
+                    </div>
+                    <div>
+                        <select multiple>
+                            <option value="1">12345431234</option>
+                            <option value="2">999999</option>
+                            <option value="3">5678567</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" list="lists">
+                        <datalist id="lists">
+                            <option value="a">옵션1</option>
+                            <option value="b">옵션2</option>
+                            <option value="c">옵션3</option>
+                            <option value="d">옵션4</option>
+                        </datalist>
+                    </div>
+                </form>
+
+                <script>
+                    // const btn = document.querySelector('#btn');
+                    // // const btn = document.getElementById('btn');
+                    // btn.addEventListener('click', function() {
+                    //     const date = document.querySelector('#date');
+                    //     const month = document.querySelector('#month');
+                    //     const week = document.querySelector('#week');
+                    //     const time = document.querySelector('#time');
+                    //     const datetimeLocal = document.querySelector('#datetime-local');
+                    //     console.log(date.value)
+                    //     console.log(month.value)
+                    //     console.log(week.value)
+                    //     console.log(time.value)
+                    //     console.log(datetimeLocal.value)
+                    // });
+                    const myForm = document.querySelector('#myForm')
+                    const submit = document.querySelector('#submit')
+                    myForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log('form submit');
+                    });
+                </script>
+            </body>
+        </form>
+    </body>
+</html>
