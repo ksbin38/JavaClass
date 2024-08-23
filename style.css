@@ -1,0 +1,47 @@
+/* 외부 스타일 시트 작성하기 */
+
+* {
+    margin: 0;
+    padding: 0px;
+    border: 1px solid red;
+}
+
+h1 {
+    padding: 10px;
+    background-color: #222;
+    color: #fff;
+}
+
+/*제일 마지막에 적은 스타일이 적용됨, 이렇게 해도 인라인 스타일이 제일 우선순위에 있음 >> !important를 적으면 우선순위로 올라간다*/
+p {
+    color: blue;
+}
+p {
+    color: red;
+}
+/*div id > p class이기 때문에 div의 id를 적은 스타일시트가 있으면 p.클래스를 적은 스타일시트가 있어도 우선순위에서 밀리게 된다.*/
+#container .pTag {
+    color: brown;
+}
+
+/*그룹 선택자*/
+.pTag , #underline{
+    color: darkred;
+}
+
+p.pTag {
+    color: green;
+}
+
+.pTag {
+    color: yellow;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+#container {
+    width: 300px;
+    margin: 0 auto;
+}
