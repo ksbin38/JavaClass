@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>블록 레벨과 인라인 레벨</title>
+		<style>
+			body  * {  /* body 하위에 있는 모든 요소에 대해 */
+				border:1px solid blue;
+			}
+			.accent {
+				color:red;
+				font-weight:bold;
+			}
+			div {
+				box-sizing: border-box;
+				border: 1px solid red;
+			}
+			.blockTag {
+				width: 300px;
+				height: 200px;
+				padding: 10px;
+				/* = padding: 10px(상) 20px(우) 40px(하) 30px(좌);
+				padding: x축, y축;
+				padding: n >> 모든 방향에 같은걸로 적용*/
+				box-sizing: content-box;
+				border: 5px solid #000;
+				border-width: 5px 10px;
+				border-color: red;
+				border-radius: 10%;/*50%되면 원이 됨*/
+			}
+			.marginText {
+				/*margin을 auto로 설정하면 가운데로 간다.*/
+				/*margin은 중첩이 된다(위아래 margin이 각각  30px이면 겹쳤을 때도 30px만큼만 간격을 벌린다.)*/
+				margin-top: 30px;
+				margin-bottom: 30px;
+				border: 1px solid red;
+				padding: 20px;
+			}
+			div {
+				border: 1px solid green;
+				padding: 20px;
+				margin-bottom: 30px;
+			}
+			#container {
+				width: 600px;
+				border-radius: 30px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			#description {
+				border-top-left-radius: 30px;
+				border-top-right-radius: 30px;
+			}
+			#package {
+				border-bottom-left-radius: 30px;
+				border-bottom-right-radius: 30px;
+			}
+			#description, #receipe, #package {
+				padding: 20px;
+				width: 300px;
+				margin: 30px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="description">#description</div>
+			<div id="receipe">#receipe</div>
+			<div id="package">#package</div>
+		</div>
+		<div class="blockTag">h1 ~ h6, p 태그 그리고 div 등 블럭 속성</div>
+		<span>i, span, u 등 인라인 속성</span>
+
+		<h1>시간이란...</h1>
+		<div class="marginText">내일 죽을 것처럼 <span class="accent">오늘</span>을 살고 </div>
+		<div class="marginText">내일 죽을 것처럼 <span class="accent">오늘</span>을 살고 </div>
+		<div class="marginText">내일 죽을 것처럼 <span class="accent">오늘</span>을 살고 </div>
+		<p>영원히 살 것처럼 <br>내일을 꿈꾸어라. </p>	  
+</body>
+</html>

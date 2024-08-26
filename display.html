@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS display 속성</title>
+  <style>
+    /* Do it! li 요소를 가로로 나란히 배치하기 */
+    nav > ul {
+      list-style:none;      
+    }
+    a {
+      text-decoration: none;
+    }
+    div {
+      border: 1px solid red;
+      width: 300px;
+    }
+    /*span 태그는 길이가 변하지 않는다, inline 속성도 지니고 있다.*/
+    span {
+      border: 1px solid blue;
+      width: 300px;
+    }
+    li {
+      display: inline;
+      border: 1px solid black;
+      padding: 20px;
+      margin: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>여기는 div tag</div>
+  <div>여기는 div tag</div>
+  <div>여기는 div tag</div>
+  <span>여기는 span tag</span>
+  <span>여기는 span tag</span>
+  <span>여기는 span tag</span>
+  <span>여기는 span tag</span>
+   <nav>
+     <ul>
+      <li><a href="#">메뉴 1</a></li>
+      <li><a href="#">메뉴 2</a></li>
+      <li><a href="#">메뉴 3</a></li>
+      <li><a href="#">메뉴 4</a></li>
+     </ul>
+   </nav>
+</body>
+</html>

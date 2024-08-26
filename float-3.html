@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>박스모델</title>
+	<style>
+    .wrapper {
+      width: 800px;
+      margin: 10px auto;
+      padding: 20px;
+      border: 1px solid #ccc;      
+    }
+	.box {
+		/* padding:20px; */
+		margin:10px;
+	}
+	/* Do it! float 속성을 사용해 배치하기 */
+	#box1{
+		background:#ffd800;
+		clear: both;
+	}
+	#box2 {
+		background: #0094ff;
+	}
+	#box1-1 {
+		background-color: green;
+	}
+	#box1-2 {
+		background-color: #ccc;
+	}
+	#box1-3 {
+		background-color: aqua;
+	}
+	.boxfloat {
+		/*div를 float로 띄우면 block속성이 사라진다. >> inline으로 바뀜*/
+		float: left;
+	}
+	.clear {
+		/* float에는 clear를 함께 써주는 것이 좋다. 다른것이 영향을 안받을 수 있음 */
+		clear: both;
+	}
+	</style>
+</head>
+<body>
+  <div class="wrapper">
+		<div class="box" id="box1">
+		<div class="boxfloat" id="box1-1">박스1</div>
+		<div class="boxfloat" id="box1-2">박스2</div>
+		<div class="boxfloat" id="box1-3">박스3</div>
+		<div class="clear"></div>
+	</div>
+    <div class="box" id="box2">박스2</div>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, deserunt. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>    
+  </div>
+</body>
+</html>
