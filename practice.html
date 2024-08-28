@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>애니메이션이 포함된 네비게이션 바</title>
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+      v2.0 | 20110126
+      License: none (public domain)
+   */
+
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      :root {
+        --primary: rgb(30, 30, 46);
+        --secondary: rgb(210, 218, 226);
+        --third: rgb(72, 84, 56);
+      }
+      .header {
+        height: 90px;
+        position: relative;
+        background-color: var(--primary);
+        padding: 10px 20px 0 20px;
+      }
+      a {
+        text-decoration: none;
+        color: var(--secondary);
+      }
+      .header .logo {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .header .logo a {
+        font-size: 30px;
+        font-weight: bold;
+        color: var(--secondary);
+      }
+      .nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+      }
+      .header .nav ul li {/*상단 고정메뉴 세팅*/
+        font-size: 20px;
+        color: var(--secondary);
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 80px;
+        position: relative;
+      }
+      .header ul li:last-child {/*맨 오른쪽 끝 여백 없애기*/
+        margin-right: 0;
+      }
+      .header .nav ul li > ul {
+        display: none;
+        position: absolute;
+        width: 160px;
+        background-color: var(--third);
+        border-radius: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .header .nav ul li:last-child > ul {
+        right: 0;
+        left: auto;
+        transform: translateX(0);
+      }
+      .header .nav ul li:hover > ul {/*하위메뉴 마우스 올릴 때 표시*/
+        display: block;
+      }
+      .header .nav ul li > ul li {
+        margin-right: 0;
+        display: block;
+      }
+      .header .nav ul li ul li a {
+        color: var(--secondary);
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        transition: all;
+        transition-duration: 0.3s;
+      }
+      /* .header .nav ul li > ul li:hover {
+        border-bottom: 1px solid var(--secondary);
+      } */
+      .header .nav ul li > ul li a:hover {
+        color: var(--primary);
+      }
+      .header .nav ul li > ul li a::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--secondary);
+        transition: all 0.3s;
+      }
+      .header .nav ul li > ul li a:hover::after {
+        width: 100%;
+      }
+      .header .nav ul li > ul li:last-child a:hover::after {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="logo"><a href="/">logo</a></h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="/">홈</a></li>
+          <li>
+            회사소개
+            <ul>
+              <li><a href="">회사소개</a></li>
+              <li><a href="">연혁</a></li>
+              <li><a href="">사업분야</a></li>
+              <li><a href="">오시는길</a></li>
+            </ul>
+          </li>
+          <li>
+            제품소개
+            <ul>
+              <li><a href="">제품 1</a></li>
+              <li><a href="">제품 2</a></li>
+              <li><a href="">제품 3</a></li>
+              <li><a href="">제품 4</a></li>
+            </ul>
+          </li>
+          <li>
+            게시판
+            <ul>
+              <li><a href="">공지사항</a></li>
+              <li><a href="">자료실</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

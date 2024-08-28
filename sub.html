@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <style>
+            .container {
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: 1px solid #000;
+            }
+            .box {
+                background-color: rgba(0, 255, 0, 0.5);
+                width: 300px;
+                height: 300px;
+                font-size: 30px;
+            }
+            .box:hover {
+                background-color: #000;
+                transform: scale(2);
+            }
+            .box1 {
+                transition: all 0.3s ease;
+            }
+            .box2 {
+                transition-property: background-color;
+                transition-duration: 0.5s;
+                transition-timing-function: linear;
+                transition-delay: 3s;
+            }
+            .box3 {
+                transition-property: background-color;
+                transition-duration: 1s;
+                transition-timing-function: ease-in;
+            }
+            .box4 {
+                transition-property: background-color;
+                transition-duration: 1s;
+                transition-timing-function: ease-out;
+            }
+            .box5 {
+                transition-property: background-color;
+                transition-duration: 1s;
+                transition-timing-function: ease-in-out;
+            }
+            .box6 {
+                transition-property: background-color;
+                transition-duration: 1s;
+                transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"></div>
+        <div class="box box1"><h1>ease</h1></div>
+        <div class="box box2"><h1>linear</h1></div>
+        <div class="box box3"><h1>ease-in</h1></div>
+        <div class="box box4"><h1>ease-out</h1></div>
+        <div class="box box5"><h1>ease-in-out</h1></div>
+        <div class="box box6"><h1>cubic-bezier</h1></div>
+    </body>
+</html>
