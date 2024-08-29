@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html kang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <script>
+            // 호이스팅
+            // ES6가 나온 이후 >> let, const만 써라
+            // let a 변수 선언시 호이스팅은 되지만 초기화 전까지 접근할 수 없게 한다.
+            // 일시적 사각지대 temporal Dead zone
+            // console.log(a);
+            // let a = 10;
+            // // 함수 선언식 >> 호이스팅 가능
+            // function abc(a, b) {
+            //     return a + b;
+            // }
+            // console.log(abc(1, "2")); // 12
+            // 함수 표현식 >> 호이스팅 불가
+            // abc2();
+            // var abc2 = function () {
+            //     console.log("abcd2");
+            // }
+
+            // function ex() {
+            //     if (true) {
+            //         var x = 1;
+            //     }
+            //     console.log(x);
+            // }
+            // ex(); // 1
+            // function ex() {
+            //     var x = 1;
+            //     var x = 2;
+            //     console.log(x);
+            // }
+            // ex(); // 2
+
+            // var globalVar = "나는 글로벌";
+            // function ex() {
+            //     var globalVar = "나는 로컬";
+            //     console.log(globalVar);
+            // }
+            // ex(); // 나는 로컬
+            // console.log(globalVar); // 나는 글로벌
+            // ***********************이래서 var사용하지 말라고 한다**************************
+
+            // const a = 10;
+            // a = 20;
+            // console.log(a); // 재할당 불가이기 때문에 에러
+
+            function add(a, b, c = 5, d = 10) {
+                return a + b + c + d;
+            }
+            const res1 = add(1, 2, 3, 4);
+            console.log(res1);
+            const res2 = add(1, 2, 3);
+            console.log(res2); // d의 기본값을 정했기 때문에 1+2+3+10 = 16으로 출력
+            const res3 = add(1, 2);
+            console.log(res3); // c의 기본값을 정했기 때문에 1+2+5+10 = 18로 출력
+
+            const sum = function (a, b) { // 익명함수
+                return a + b;
+            }
+
+            (function(a, b) { // 선언과 동시에 실행되는 일회성 함수
+                // do something
+                console.log(a + b);
+            } (1, 2));
+
+            // 셋 다 같음
+            const hi = function() {
+                return "안녕하세요?";
+            }
+            const h2 = () => hi; // 중괄호를 안써서 return을 적을 필요가 없다
+            const h3 = () => {
+                return "h1";
+            };
+
+            // 형변환
+            let v = true;
+            console.log(typeof v); // boolean
+            // boolean >> string 변환
+            v = String(v);
+            console.log(typeof v); // string
+            console.log(v);
+            // string >> number (문자가 숫자만으로 구성되어 있을 때만 가능)
+            let str = "123";
+            console.log(typeof str); // string
+            let num = Number(str);
+            console.log(typeof num); // number
+            console.log(num); // number형만 콘솔에서 봤을 때 색이 다르다
+            console.log(Number(true)); // 1
+            console.log(Number(false)); // 0
+
+            console.log(Boolean(1)); // true
+            console.log(Boolean(0)); // false
+
+            console.log(Boolean("1")); // true
+            console.log(Boolean(" ")); // true(공백이 있을 경우, "" >> false)
+            console.log('2' > 1); // true("2"를 숫자2로 인식함)
+            console.log("01" == 1); // true(등호가 두개여서 자료형이 아닌 값만 보니까)
+            console.log(true == 1); // true
+
+            let a = 0;
+            console.log(Boolean(a)); // false
+            let b = "0";
+            console.log(Boolean(b)); // true
+            console.log(a == b); // true
+            console.log(0 == false); // true
+            console.log(0 === false); // false
+            console.log("" == false); // true
+            console.log("" === false); // false
+            console.log(null == undefined); // true
+            console.log(null === undefined); // false
+
+            let user = {
+                name: 'john',
+                age: 30,
+                sayHi() {
+                    console.log(this.name);
+                },
+            };
+            user.sayHi(); // john
+            let admin = user;
+            user = null;
+            admin.sayHi(); // john
+            // 메서드 내에서 this로 객체를 참조
+            // this 값은 런타임에 결정된다.
+            // 함수 선언 시 this를 사용할 수 있다. 단, 함수가 호출되기 전까지 this에는 값이 할당되지 않는다.
+            // 함수를 복사해서 객체 간 전달 가능
+            // 함수를 객체 속성에 저장해서 object.method() 같은 메서드 형태로 호출하면 this는 object를 참조한다.
+            function abc() {
+                let name = "abc";
+                return this.name; // this를 사용하면 엄격한 코드 작성이 가능하기에 가능하면 this를 작성하는 것이 좋다.
+            }
+            const abcdef = {
+                name: "abcdef",
+                sayHi() {
+                    let arr = () => console.log(this.name)
+                }
+            }
+        </script>
+    </body>
+</html>

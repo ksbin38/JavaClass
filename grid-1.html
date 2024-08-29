@@ -1,0 +1,41 @@
+  <!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      div {
+        border: 1px solid red;
+        padding: 10px;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 설정을 하나씩 추가할수록 열이 하나씩 늘어남 */
+        grid-template-rows: minmax(100px, auto); /* 행도 마찬가지 */
+        grid-gap: 10px 20px; /* column갭 row갭 */
+      }
+      @media (max-width: 630px) {
+        .container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+    </div>
+  </body>
+  </html>

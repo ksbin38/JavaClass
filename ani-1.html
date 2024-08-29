@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation</title>
+	<style>
+		#container{
+			width:500px;
+			margin:20px auto;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			float:left;
+			margin:50px;
+		}
+		#box1 {
+			background-color: #4cff00;
+			border: 1px solid transparent;
+			animation-name: shape;  /* 애니메이션 지정 */ 
+			animation-duration: 5s;  /* 애니메이션 실행 시간 */
+			animation-iteration-count: infinite; /* 애니메이션 반복, 숫자로 반복횟수 지정 가능 */
+			animation-delay: 3s; /* 반복 중 맨 처음에만 딜레이 발생 */
+			/* 한줄로 표현이 가능하나 가독성을 위해 풀어서 적어두는 것이 좋다 */
+		}
+		#box2 {
+			background-color: #8f06b0;
+			border: 1px solid transparent;
+			animation-name: rotate;  /* 애니메이션 지정 */
+			animation-duration: 3s;  /* 애니메이션 실행 시간 */
+			animation-iteration-count: infinite;
+			animation-direction: alternate; /* 애니메이션 왕복 */
+		}
+
+		@keyframes shape { /* shape 애니메이션 정의 */
+			0% { /* from ~ to 대신 0% ~ 100%로 적을수도 있다 */
+				border: 1px solid transparent;  /* 1px짜리 투명한 테두리 */
+			}
+			100% {
+				border: 1px solid #000;  /* 검정색 테두리 */
+				border-radius: 50%;  /* 테두리를 둥글게 */
+			}
+		}
+
+		@keyframes rotate {  /* rotate 애니메이션 정의 */
+			from {
+				transform:rotate(0deg)  /* 시작은 0도에서 */
+			}
+			to {
+				transform: rotate(45deg);  /* 45도까지 회전 */
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<div class="box" id="box1"></div>
+		<div class="box" id="box2"></div>
+	</div>
+</body>
+</html>

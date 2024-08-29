@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="KH스마트캠퍼스,html,css,자바스크립트" />
+        <meta name="description" content="사이트 검색에 노출될 사이트의 요약 구문" />
+        <meta name="author" content="제작자명" />
+        <title>insert title here</title>
+        <!-- <link rel="stylesheet" href="asset/css/style.css"> -->
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                width: 100vw; /* viewpoint width */
+                height: 100vh; /* viewpoint height */
+                border: 1px solid red;
+                background-image: linear-gradient(135deg, hsl(170deg, 80%, 70%), hsl(190deg, 80%, 70%), hsl(250deg, 80%, 70%), hsl(320deg, 80%, 70%)); /* 배경색 그라데이션으로 입힐 때 background-image 사용 */
+                background-size: 200%;
+                animation-name: ani;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+            @keyframes ani {
+                0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 100% 100%;
+                }
+            }
+            .pushable {
+                background: rgb(192, 57, 43);
+                border-radius: 10px;
+                border: 0;
+                padding: 0;
+                cursor: pointer; /* 마우스 커서 올리면 손가락으로 변함 */
+                margin-top: 100px;
+                margin-left: 100px;
+            }
+            .front {
+                display: block;
+                padding: 10px 40px;
+                font-size: 30px;
+                color: #fff;
+                background-color: rgb(231, 76, 60);
+                border-radius: 10px;
+                transform: translateY(-10px);
+            }
+            .pushable:active .front {
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" class="pushable">
+            <span class="front">버튼</span>
+        </button>
+    </body>
+</html>

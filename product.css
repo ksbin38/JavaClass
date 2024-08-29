@@ -1,0 +1,56 @@
+#container {
+  width:1000px;
+  margin:20px auto;
+}
+h1 {
+  text-align:center;
+}
+.prod-list {
+  list-style:none;
+  padding:0;
+}
+.prod-list li {
+  float: left;
+  padding: 0;
+  margin: 10px;
+  overflow: hidden;/*영역 밖에서 실행되는 것들 안보이게 숨기기*/
+  position: relative;
+}
+.prod-list img {
+  margin:0;
+  padding:0;
+  float:left;
+  z-index:5;
+}
+.prod-list .caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  padding-top: 30px;
+  opacity: 0;/*투명도(0 ~ 1 / 0으로 갈수록 투명)*/
+  transition: all 0.5s ease-in-out;
+  transform: translateY(-200px);/*위에서 아래로 내려오게끔 시작점을 위로 설정*/
+}
+.prod-list li:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*두번째 항목으로 마우스 가져갈 시 아래에서 위로 올라오게 설정*/
+.prod-list li:nth-child(2) .caption {
+  transform: translateY(200px);
+}
+.prod-list li:nth-child(2):hover .caption {
+  transform: translateY(0);
+}
+/*세번째 항목으로 마우스 가져갈 시 왼쪽에서 오른쪽으로 나타나게 설정*/
+.prod-list li:nth-child(3) .caption {
+  transform: translateX(-200px);
+}
+.prod-list li:nth-child(3):hover .caption {
+  transform: translateX(0);
+}
