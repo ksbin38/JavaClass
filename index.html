@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="KH스마트캠퍼스,html,css,자바스크립트" />
+        <meta name="description" content="사이트 검색에 노출될 사이트의 요약 구문" />
+        <meta name="author" content="제작자명" />
+        <title>insert title here</title>
+        <!-- <link rel="stylesheet" href="asset/css/style.css"> -->
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>1-1</li>
+            <li>1-2</li>
+        </ul>
+        <ul>
+            <li>2-1</li>
+            <li>2-2</li>
+        </ul>
+        <a href="http://google.com/file.zip">링크1</a>
+        <a href="http://google.com">링크2</a>
+        <h1>목차</h1>
+        <div class="contents">
+            <ul class="book">
+                <li class="chapter">1장</li>
+                <li class="chapter">2장</li>
+            </ul>
+        </div>
+        <script>
+            // getElement*, querySelector* 요소 검색하기
+            const elems = document.querySelectorAll("ul > li:last-child");
+            for (let elem of elems) {
+                console.log(elem.innerHTML);
+            } // 1-2 2-2
+            elems.forEach((item) => console.log(item.innerHTML)); // 1-2 2-2
+            // :hover, :active 다 가능
+            // querySelector: 주어진 css 선택자에서 첫번째 요소를 반환
+            const el = document.querySelector("ul"); // === document.querySelectorAll("ul")[0];
+            console.log(el); // ul > li 1-1, 1-2 모두 출력
+
+            // matches: 주어진 css 선택자와 일치하는지 여부판단
+            for (let el of document.body.children) {
+                if (el.matches('a[href$="zip"]')) {
+                    console.log(el.href);
+                }
+            } // 링크 끝이 zip으로 끝나는 것만 출력
+
+            // closest: 부모요소, 부모요소의 부모요소 등 DOM 트리에서 특정 요소의 상위에 있는 요소들을 조상요소라고 한다.
+            // 메서드 elem.closest(css) >> elem 자기 자신을 포함해서 css 선택자와 일치하는 가장 가까운 조상 요소를 찾는다.
+            // 해당 요소로부터 시작해서 DOM 트리를 한단계씩 거슬러 올라간다.
+            // 선택자와 일치하는 요소를 찾으면 검색을 중단하고 해당 요소를 반환한다.
+            let chapter = document.querySelector('.chapter');
+            console.log(chapter.closest(".book")); // ul.book 내 모두 출력
+            console.log(chapter.closest(".contents")); // div.contents 내 모두 출력
+            console.log(chapter.closest("h1")); // h1은 부모요소가 아니기 때문에 null 출력
+
+            // 존재하지만 잘 사용하지 않음
+            // document.getElementsByTagName('input');
+            // document.getElementsByClassName('abc');
+        </script>
+    </body>
+</html>
