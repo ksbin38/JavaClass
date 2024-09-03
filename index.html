@@ -14,103 +14,203 @@
                 padding: 0;
                 box-sizing: border-box;
             }
-            /* a {
-                font-size: 40px;
+            .alert {
+                background-color: #2ecc71;
+                color: #375c80;
+                padding: 15px;
+                border-radius: 5px;
+                border: 1px solid #375c80;
             }
-            a:visited {
-                color: brown;
+            table {
+                border-collapse: collapse;
             }
-            a:link {
-                color: burlywood;
+            th, td {
+                padding: 5px;
+                border: 1px solid black;
+                text-align: center;
             }
-            a:hover {
-                color: red;
-            }
-            a:focus {
-                color: green;
-            }
-            a:active {
-                color: aqua;
-            }
-            nav {
-                border: 1px solid #000;
-                padding: 10px 20px;
-            }
-            nav a {
-                margin-left: 20px;
-                margin-right: 20px;
-                padding: 10px 10px;
-            }
-            nav a:hover, nav a:focus {
-                background-color: #000;
-                color: #fff;
-            }
-            nav:hover {
-                background-color: aqua;
-            }
-            div {
-                width: 300px;
-                height: 300px;
-                border: 1px solid red;
-            }
-            div:hover {
+            th {
                 background-color: #ccc;
+                font-weight: bold;
             }
-            div:hover p {
-                font-size: 30px;
-            } */
-            a, button {
-                text-decoration: none;
+            .btnContainer {
+                width: 204px;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
             }
-            a {
-                font-size: 20px;
-                color: #000;
+            .btnContainer .btn {
+                padding: 5px 10px;
             }
-            section {
-                height: 500px;
+            .nowMonth {
+                text-align: center;
+                width: 204px;
             }
-            nav {
-                position: sticky;
-                top: 0;
-                left: 0;
-                right: 0;
+            #header {
                 background-color: #000;
-                padding: 20px;
-            }
-            nav ul li {
-                display: inline-block;
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-            nav ul li a {
                 color: #fff;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
             }
-            #menu1:target, #menu2:target, #menu3:target, #menu4:target {
-                background-color: aqua;
+            #nav {
+                display: none;
+            }
+            #nav .active {
+                display: block;
+            }
+            #div2 {
+                color: red;
+                margin: 15px;
             }
         </style>
     </head>
     <body>
-        <!-- <div><p>text</p></div> -->
-        <nav>
+        <div id="div" class="alert"><b>안녕하세요!</b> 중요 메시지를 확인했습니다.</div>
+        <ol id="elem">
+            <li>Hello</li>
+            <li>World</li>
+        </ol>
+        <p class="nowMonth"><span id="nowMonthValue">9</span></p>
+        <div id="calendar"></div>
+        <div class="btnContainer">
+            <button type="button" id="btnPrev" class="btn btn-prev">이전달</button>
+            <button type="button" id="btnNext" class="btn btn-next">다음달</button>
+        </div>
+        <!-- <header id="header">
+            앱헤더
+            <button type="button" id="btnMenu">메뉴</button>
+        </header>
+        <nav id="nav">
             <ul>
-                <li><a href="#menu1">메뉴1</a></li>
-                <li><a href="#menu2">메뉴2</a></li>
-                <li><a href="#menu3">메뉴3</a></li>
-                <li><a href="#menu4">메뉴4</a></li>
+                <li><a href="">메뉴</a></li>
+                <li><a href="">메뉴</a></li>
+                <li><a href="">메뉴</a></li>
+                <li><a href="">메뉴</a></li>
             </ul>
-        </nav>
-        <section id="menu1">
-            <h2>메뉴1의 상세 내용</h2>
-        </section>
-        <section id="menu2">
-            <h2>메뉴2의 상세 내용</h2>
-        </section>
-        <section id="menu3">
-            <h2>메뉴3의 상세 내용</h2>
-        </section>
-        <section id="menu4">
-            <h2>메뉴4의 상세 내용</h2>
-        </section>
+        </nav> -->
+        <div id="div2">버튼</div>
+        <script>
+            // 복제: elem.cloneNode(true) -> elem의 같은 복제본이 만들어진다. 속성, 자손요소 모두 복사된다.
+            // elem.cloneNode(false) -> 후손 노드 복사 없이 elem만 복제된다.
+            const div = document.querySelector("#div");
+            const div2 = div.cloneNode(true);
+            div2.querySelector("b").innerHTML = "안녕히 가세요!";
+            div.after(div2);
+
+            // 요소의 모든 하위 요소들을 삭제하는 함수
+            function clear(elem) {
+                // for문을 쓰면 에러가 날 수 있으니 while문 사용
+                while(elem.firstChild) {
+                    elem.firstChild.remove();
+                }
+                // 또는 elem.innerHTML = "";
+            }
+            const elem = document.querySelector("#elem");
+            clear(elem);
+
+            function createCalender(elem, year, month) {
+                // 1. new Date(year, month);
+                let ymd = new Date(year, month - 1);
+                // 2. table 태그를 생성
+                let html = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>일</th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                                <th>토</th>
+                            </tr>
+                        </thead>`;
+                // 3. day(td태그 추가)
+                html += `<tbody><tr>`;
+                for (let i = 0; i < ymd.getDay(); i++) {
+                    html += `<td></td>`;
+                }
+                // 4. td가 7개가 되면 </tr>태그를 추가
+                while (ymd.getMonth() == (month - 1)) {
+                    html += `<td>${ymd.getDate()}</td>`;
+                    if (ymd.getDay() == 6) {
+                        html += `</tr><tr>`;
+                    }
+                    ymd.setDate(ymd.getDate() + 1);
+                    // html += `<td>${ymd.getDate()}</td>`;
+                    // if (ymd.getDay() % 7 == 6) {
+                    //     html += `</tr><tr>`;
+                    // }
+                    // ymd.setDate(ymd.getDate() + 1);
+                }
+                // if (ymd.getDay != 0) {
+                //     for (let i = ymd.getDay(); i <= 6; i++) {
+                //         html += `<td></td>`;
+                //     }
+                // }
+                // 5. 마지막 날짜가 되면 마지막 행에 빈칸 추가 후 </tbody></table>
+                for(let i = ymd.getDay(); i <= 6; i++) {
+                    html += `<td></td>`;
+                }
+                // html += `</tr></tbody></table>`;
+                // 6. elem.innerHTML = html;
+                elem.innerHTML = html;
+            }
+            const ymd = document.querySelector("#calendar");
+            let nowYear = 2024;
+            let nowMonth = 9;
+            createCalender(ymd, nowYear, nowMonth);
+            // const ymd = new Date(2024, 8);
+            // console.log(ymd);
+            // console.log(ymd.getFullYear());
+            // console.log(ymd.getMonth());
+            // console.log(ymd.getDate());
+            // console.log(ymd.getDay());
+
+            const btnPrev = document.querySelector("#btnPrev");
+            const btnNext = document.querySelector("#btnNext");
+            btnPrev.addEventListener("click", () => {
+                createCalender(ymd, 2024, nowMonth <= 1 ? (nowMonth = 1) : --nowMonth);
+                document.querySelector("#nowMonthValue").innerHTML = nowMonth;
+            });
+            btnNext.addEventListener("click", () => {
+                createCalender(ymd, 2024, nowMonth >= 12 ? (nowMonth = 12) : ++nowMonth);
+                document.querySelector("#nowMonthValue").innerHTML = nowMonth;
+            });
+
+
+            // <div class~>
+            // <div style~>
+            // 자바스크립트: 클래스, 스타일 두가지 다 수정가능
+            // CSS 클래스를 우선 수정하는 것이 중요하다
+
+            // classList
+            // elem.classList.add("클래스명"): 해당 요소에 클래스명이 추가됨
+            // elem.classList.remove("클래스명"): 해당 요소애 클래스명이 삭제됨
+            // elem.classList.toggle("클래스명"): 클래스명이 있으면 제거, 없으면 추가
+            // elem.classList.contains("클래스명"): 클래스명 존재 여부애 따라 true/ false 반환
+            // 요소의 스타일을 인라인으로 지정하기
+            // elem.style.width = "100px"
+            // elem.style.backgroundColor = "#fff" >> background-color -> 카멜케이스
+            // document.querySelector("#btnMenu").addEventListener("click", () => {
+            //     const nav = document.querySelector("#nav");
+            //     nav.classList.toggle("active");
+            //     document.querySelector("#header").style.backgroundColor = "#ccc";
+            // });
+            const div10 = document.querySelector("#div2");
+            // div.style.cssText = `
+            // color: red;
+            // width: 50px;
+            // border: 1px solid red;
+            // `;
+            // ㄴ> = div.setAttribute('style', 'color: red; width: 50px; border: 1px solid red;');
+            // div.style.margin = "20px"; >> 반드시 단위도 같이 적어줘야된다.
+
+            // getComputedStyle: 계산된 스타일 얻기
+            const divStyle = getComputedStyle(div10);
+            console.log(divStyle.color); // rgb(255, 0, 0)
+            console.log(div10.style.color); // 출력 안됨
+        </script>
     </body>
 </html>
