@@ -2,64 +2,137 @@
 <html lang="ko">
     <head>
         <meta charset="UTF-8" />
+        <title>insert title here</title>
         <style>
-            .container {
+            body {
+                position: relative;
+            }
+            #box {
+                padding: 20px;
+                border: 1px solid red;
+                background: #ccc;
                 width: 300px;
                 height: 300px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                border: 1px solid #000;
+                transition: all 0.3s;
             }
-            .box {
-                background-color: rgba(0, 255, 0, 0.5);
-                width: 300px;
-                height: 300px;
-                font-size: 30px;
-            }
-            .box:hover {
-                background-color: #000;
-                transform: scale(2);
-            }
-            .box1 {
-                transition: all 0.3s ease;
-            }
-            .box2 {
-                transition-property: background-color;
-                transition-duration: 0.5s;
-                transition-timing-function: linear;
-                transition-delay: 3s;
-            }
-            .box3 {
-                transition-property: background-color;
-                transition-duration: 1s;
-                transition-timing-function: ease-in;
-            }
-            .box4 {
-                transition-property: background-color;
-                transition-duration: 1s;
-                transition-timing-function: ease-out;
-            }
-            .box5 {
-                transition-property: background-color;
-                transition-duration: 1s;
-                transition-timing-function: ease-in-out;
-            }
-            .box6 {
-                transition-property: background-color;
-                transition-duration: 1s;
-                transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            .form {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 50px;
             }
         </style>
     </head>
     <body>
-        <div class="container"></div>
-        <div class="box box1"><h1>ease</h1></div>
-        <div class="box box2"><h1>linear</h1></div>
-        <div class="box box3"><h1>ease-in</h1></div>
-        <div class="box box4"><h1>ease-out</h1></div>
-        <div class="box box5"><h1>ease-in-out</h1></div>
-        <div class="box box6"><h1>cubic-bezier</h1></div>
+        <button type="button" id="btn">클릭</button><br>
+        <!-- this 요소에 접근하기 -->
+        <button type="button" onclick="alert(this.innerHTML)">클릭해주세요</button><br>
+        <button id="btn2">Text를 숨기려면 클릭하세요</button><br>
+        <button id="btn3" onclick="this.hidden = true">클릭하면 나 자신을 숨겨라</button>
+        <p id="txt">Text</p>
+        <div id="form">
+            <label for="w">가로길이</label>
+            <input type="text" id="w" name="w" />
+            <label for="h">세로길이</label>
+            <input type="text" id="h" name="h" />
+            <label for="c">배경색</label>
+            <input type="color" id="c" name="c" />
+            <button type="button" id="btn4">확인</button>
+        </div>
+        <div id="box"></div>
+        <script>
+            // 이벤트: 무언가 일어났다는 신호
+            // 마우스 이벤트
+            // click: 요소 위에서 마우스 왼쪽 클릭 시(터치 스크린에서는 탭 했을 시)
+            // touchstart, touchend
+            // contextmenu: 요소에서 마우스 우클릭 시 발생
+            // mouseover, mouseout: 커서를 요소 위로 움직였을 때, 요소 밖으로 움직였을 때
+            // mousedown, mouseup: 마우스 왼쪽 버튼을 누르고 있을 때, 마우스 버튼을 땔 때
+            // mousemove: 마우스를 움직일 때
+
+            // 폼요소
+            // submit: 사용자가 폼을 제출할 때
+            // focus: 사용자가 input과 같은 요소에 포커스를 할 때
+
+            // 키보드 이벤트
+            // keydown, keyup: 키보드를 누를 때, 땔 때
+
+            // 문서 이벤트
+            // DOMDontentLoaded: HTML이 전부 로드 및 처리되어 DOM 생성이 완료되었을 때
+
+            // 이벤트 핸들러: 이벤트에 반영하려면 이벤트가 발생했을 때 실행되는 함수인 핸들러(handler)를 할당해야한다.
+            const btn = document.querySelector("#btn");
+            btn.onclick = function() {
+                for (let i = 0; i < 10; i++) {
+                    console.log(`숫자 ${i}번`);
+                }
+            };
+
+            function sayHi() {
+                console.log("hi");
+            }
+            btn.onclick = function() {
+                sayHi(); // 이전에 for 문으로 숫자 출력하는건 안나옴
+            };
+            // onclick 이벤트 할당 시에 ()를 붙이면 함수를 호출하겠다는 의미. 따라서 함수를 할당만 할 경우에는 ()를 생략한다.
+
+            document.body.setAttribute('onclick', function() {
+                console.log(1);
+            });
+
+            // addEventListener, removeEventListener
+            // elem.addEventListener(event, handler, [option]);
+            /* option: 
+                once: true >> 이벤트가 발생되면 리스너가 자동삭제
+                capture >> 어느 단계에서 이벤트를 다뤄야할지 알려주는 속성(true / false)
+                passive: true >> 리스너에서 지정한 함수가 preventDefault()를 호출하지 않는다.
+            */
+
+            // elem.removeEventListener(event, handler, [option]);
+            function thanks() {
+                console.log("감사합니다");
+            }
+            btn.addEventListener("click", thanks); // 괄호 붙이면 바로 실행돼서 붙이면 안된다.
+
+            document.addEventListener("DOMContentLoaded", () => {
+                console.log("DOM이 완성되었다.");
+            }); // 끝까지 1회 정주행 후 실행된다.
+
+            // 이벤트 객체
+            // 클릭했을 시 포인터의 좌표정보 얻기
+            btn.onclick = function(e) {
+                const tg = `${e.type} 이벤트가 ${e.currentTarget}에서 발생했다.`;
+                const pos = `이벤트가 발생할 곳의 좌표는 ${e.clientX} : ${e.clientY}입니다.`;
+                console.log(tg);
+                console.log(pos);
+            };
+
+            // HTML 속성: onclick="..."
+            // DOM 프로퍼티: elem.onclick
+            const btn2 = document.querySelector("#btn2");
+            btn2.onclick = function() {
+                const txt = document.querySelector("#txt");
+                txt.hidden = true;
+                txt.style.display = "none";
+            }
+
+            // const btn3 = document.querySelector("#btn3");
+            // btn3.onclick = function() {
+            //     btn3.hidden = true;
+            //     btn3.style.display = "none";
+            // }
+
+            const btn4 = document.querySelector("#btn4");
+            const box = document.querySelector("#box");
+            function doit() {
+                const w = document.querySelector("#w").value;
+                const h = document.querySelector("#h").value;
+                const c = document.querySelector("#c").value;
+
+                box.style.width = w + "px";
+                box.style.height = `${h}px`;
+                box.style.backgroundColor = c;
+            }
+            btn4.addEventListener("click", doit);
+        </script>
     </body>
 </html>
