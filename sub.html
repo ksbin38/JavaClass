@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>insert title here</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <button type="button" id="btn">버튼</button>
+        <ol id="ol">
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+            <li>444</li>
+            <li>555</li>
+        </ol>
+        <div id="div">123</div>
+        <form action="" id="form">
+            <input type="text" id="input" value="100">
+            <button type="submit">submit</button>
+        </form>
+        <script>
+            // // ES6
+            // const div = document.querySelector("#div");
+            // console.log(div);
+            // // ES5
+            // var div2 = document.getElementById("div");
+            // console.log(div2);
+            
+            // $("#div").hide();
+            // css 변경 시 1개의 속성만 변경할 경우
+            // $("#div").css("color", "blue");
+            // css 변경 시 1개 이상 변경할 경우
+            // $("#div").css({
+            //     color: "red",
+            //     background: "blue",
+            // });
+            document.querySelector("#div").style.display = "none";
+
+            /*
+            const input = document.querySelector("#input").value;
+            console.log(input);
+            // 사용자 폼에 값을 읽는 법
+            const input2 = $("#input").val();
+            console.log(input2);
+            // 사용자 폼에 값을 쓰는 법
+            $("#input").val("asjkdlj");
+
+            // HTML 노드 안의 텍스트 읽기 및 쓰기
+            console.log($("#div").text());
+            $("#div").text("rlatnqls");
+
+            // HTML 태그 사이의 HTML 읽기 및 쓰기
+            console.log($("#ol").html());
+            $("#ol").html("<p>안녕</p>");
+            */
+
+            // 클릭 이벤트
+            $("#btn").click(function() {
+                $("#ol").slideToggle();
+            });
+            $("#form").submit(function(e) {
+                e.preventDefault();
+                console.log("form submit");
+                return;
+            });
+
+            // loop
+            var list = [1,2,3,4,5,6,7];
+            for (var i = 0; i < list.length; i++) {
+                console.log(i);
+            }
+            $.each(list, function (index, item) {
+                console.log("index = " + index + " // " + "item = " + item);
+            });
+
+            // 비동기 통신 ajax
+            $.ajax({
+                type: 'get',
+                url: 'http://api.themoviedb.org/3/movie/popular?api_key=daf14385d32e4bd56a9acaff4001de0c&language=ko-KR&page=1',
+                data: {},
+                success: function(res) {
+                    console.log(res);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie DB</title>
+    <link rel="stylesheet" href="/13/style.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <script src="circles-master/circles.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="headerTop">
+          <h1 class="logo"><a href="practice.html">Movie DB</a></h1>
+          <button type="button" class="headerBtn">장르<i class="fa fa-caret-down"></i></button>
+          <button type="button" class="headerBtn" id="headerBtn">연도<i class="fa fa-caret-down"></i></button>
+        </div>
+        <div class="inputContainer" id="inputContainer">
+          <i class="fa fa-search"></i>
+          <input type="text" class="headerSearch" id="headerSearch" placeholder="영화 검색">
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <ol class="movieList" id="movieList">
+        <!-- <li>
+          <a href="">
+            <div class="imgContainer">
+              <img src="https://picsum.photos/200/300" alt="" class="poster">
+            <div class="infoContainer">
+              <p class="date">2024-01-01</p>
+              <h2 class="title">울버린</h2>
+              <div class="rate">100</div>
+            </div>
+          </a>
+        </li> -->
+      </ol>
+      <button type="button" class="btnMore" id="btnMore">더보기</button>
+      <div class="yearsContainer" id="yearsContainer">
+        <ol class="yearList">
+        </ol>
+      </div>
+    </main>
+    <script>
+      // 데이터 생성 메서드
+      function generateData() {
+        fetch(
+          "http://api.themoviedb.org/3/movie/popular?api_key=daf14385d32e4bd56a9acaff4001de0c&language=ko-KR&page=1"
+        )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const { results } = data;
+          // results 데이터가 있으면 페이지 번호를 증가시킨다.
+          if (results.length > 0) {
+            page++;
+            // 만약 페이지 번호가 500이상이면 더보기 버튼을 숨김처리한다.
+            if (page >= 500) {
+              document.querySelector("#btnMore").style.display = "none";
+            }
+          }
+          let html = "";
+          
+          results.forEach((element, index) => {
+            html += `
+              <li>
+                <a href="">
+                  <div class="imgContainer">
+                    <img src="https://image.tmdb.org/t/p/w500${element.poster_path}" alt="" class="title" />
+                  </div>
+                  <div class="infoContainer">
+                    <p class="date">${element.release_date}</p>
+                    <h2 class="title">${element.title}</h2>
+                    <div class="rate" id="circle_${index}" data-rel="${element.vote_average}"></div>
+                  </div></a
+                >
+              </li>
+            `;
+          });
+          // 생성된 html 코드를 movieList 태그가 끝나기 전, 즉 맨 마지막에 추가한다
+          document.querySelector("#movieList").insertAdjacentHTML("beforeend", html);
+          // pie 형태의 차트 출력
+          // document.querySelectorAll("#movieList li").forEach((item, index) => {
+          //   const relItem = item.querySelector("#circle_" + index);
+          //   var ccl = Circles.create({
+          //     id: "circle_" + index,
+          //     radius: 15,
+          //     value: relItem.dataset.rel,
+          //     maxValue: 10,
+          //     width: 3,
+          //     text: function (value) {
+          //       return value;
+          //     },
+          //     colors: ["#EFEFEF", "#DB2D43"],
+          //     duration: 400,
+          //     wrpClass: "circles-wrp",
+          //     textClass: "circles-text",
+          //     valueStrokeClass: "circles-valueStroke",
+          //     maxValueStrokeClass: "circles-maxValueStroke",
+          //     styleWrapper: true,
+          //     styleText: true,
+          //   });
+          // });
+        });
+      }
+      let page = 1;
+      // 페이지 로딩 시 데이터 생성 메서드 호출
+      generateData();
+      // 더보기 버튼 클릭 시 처리
+      document.querySelector("#btnMore").addEventListener("click", () => {
+        generateData();
+      });
+      const currentYear = new Date().getFullYear();
+      const yearsArray = [];
+      for (let i = currentYear; i > currentYear - 20; i--) {
+        yearsArray.push(i);
+      }
+      // yearsArray를 loop문으로 html 생성 후 yearList에 넣는다.
+      let yearHtml = '';
+      yearsArray.forEach(item => {
+        yearHtml += `<li><button type="button" data-year="${item}">${item}</button></li>`;
+      });
+      document.querySelector("#yearList").innerHTML = yearHtml;
+      // yearList에 있는 버튼을 클릭하면 콘솔에 data-year에 있는 값을 출력하라
+      const btns = document.querySelectorAll("#yearList button");
+      // 버튼을 loop문을 이용해서 이벤트를 건다
+      btns.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          const year = e.target.dataset.year;
+        });
+      });
+      // 연도 팝업 버튼 처리
+      document.querySelector("#headerBtn").addEventListener("click", () => {
+        document.querySelector("#yearsContainer").style.display = "flex";
+      });
+    </script>
+  </body>
+</html>
