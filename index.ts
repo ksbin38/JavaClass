@@ -209,6 +209,7 @@ const ex1: Example.Inner = { // 네임스페이스에 내보낸 멤버 'Inner'�
 };
 const ex2: Example.test2 = 123;
 
+
 interface Example1 {
     hello: string;
     world?: number; // optional
