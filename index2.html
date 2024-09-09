@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html kang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>practice2</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background-color: #ddd;
+            }
+            .tabs {
+                background-color: #fff;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 20px;
+            }
+            .tabs ul {
+                display: flex;
+                list-style: none;
+                justify-content: space-between;
+            }
+            .tabs input {
+                display: none;
+            }
+            .tabs ul li {
+                width: 100%;
+            }
+            .tabs ul label {
+                display: block;
+                width: 100%;
+                text-align: center;
+                background-color: greenyellow;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                cursor: pointer;
+            }
+            .tabs ul li:nth-child(1) label {
+                border-top-left-radius: 20px;
+            }
+            .tabs ul li:nth-child(3) label {
+                border-top-right-radius: 20px;
+            }
+            .content section {
+                display: none;
+                padding: 40px 15px;
+            }
+            .tabs ul label:hover {
+                background-color: lawngreen;
+            }
+            input[type=radio]:nth-child(1):checked ~ .content section:nth-child(1),
+            input[type=radio]:nth-child(2):checked ~ .content section:nth-child(2),
+            input[type=radio]:nth-child(3):checked ~ .content section:nth-child(3) { /* n번째 탭을 누를 시 해당 탭의 내용 같이 보여주기, #tab1:checked ~ .content.section:nth-child(n)도 가능 */
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="tabs">
+            <input type="radio" id="tab1" name="tab-control" checked />
+            <input type="radio" id="tab2" name="tab-control" />
+            <input type="radio" id="tab3" name="tab-control" />
+            <ul>
+              <li title="Tab 1">
+                <label for="tab1" role="button"><span>Tab 1</span></label>
+              </li>
+              <li title="Tab 2">
+                <label for="tab2" role="button"><span>Tab 2</span></label>
+              </li>
+              <li title="Tab 3">
+                <label for="tab3" role="button"><span>Tab 3</span></label>
+              </li>
+            </ul>
+            <div class="content">
+              <section>
+                <h2>Content 1</h2>
+                <p>탭 1번 내용</p>
+              </section>
+              <section>
+                <h2>Content 2</h2>
+                <p>탭 2번 내용</p>
+              </section>
+              <section>
+                <h2>Content 3</h2>
+                <p>탭 3번 내용</p>
+              </section>
+            </div>
+        </div>
+        <script>
+        </script>
+    </body>
+</html>

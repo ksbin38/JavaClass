@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html kang="ko">
+    <head>
+        <title>practice</title>
+        <style>
+            :root {
+                --bg: rgb(10, 10, 10);
+                --fc: rgb(240, 240, 240);
+            }
+            * { /* header 테두리 생성 시 생기는 여백 없애기용 */
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            header { /* 메뉴창 테두리 생성 */
+                background-color: var(--bg);
+                width: auto;
+                height: 80px;
+                padding: 10px 30px;
+            }
+            .nav-branding, .nav-link { /* 글자 색 변경, 링크 밑줄 삭제 */
+                color: var(--fc);
+                text-decoration-line: none;
+            }
+            .nav-bar .nav-branding {
+                font-size: 40px;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+            .nav-bar, .nav-menu {
+                display: flex;
+            }
+            .nav-bar .nav-menu {
+                margin-top: auto;
+                margin-bottom: auto;
+                gap: 20px; /* 메뉴 사이 간격 */
+                list-style: none;
+            }
+            .nav-bar {
+                justify-content: space-between;
+                align-items: center;
+            }
+            .hamburger {
+                display: none;
+            }
+            .container {
+                width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .bar { /* 창 크기가 작을 때 표시될 메뉴버튼 꾸미기 */
+                background-color: #fff;
+                width: 25px;
+                height: 2px;
+                display: block;
+                margin: 6px auto;
+                transition: all 0.3s;
+            }
+            .container h2 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(45deg) translateY(11px);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translateY(-11px);
+            }
+            @media (max-width: 842px) {
+                .container {
+                    width: auto;
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+                .nav-menu {
+                    position: fixed;
+                    left: -100%;
+                    top: 80px;
+                    width: 100%;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: rgba(10, 10, 10, 0.7);
+                    transition: all 0.5s;
+                }
+                .nav-menu.active {
+                    left: 0;
+                }
+                .hamburger {
+                    display: block;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+              <nav class="nav-bar">
+                <a href="#" class="nav-branding">로고</a>
+      
+                <ul class="nav-menu" id="nav-menu">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">Services</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                  </li>
+                </ul>
+      
+                <div class="hamburger" id="hamburger">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </nav>
+            </div>
+        </header>
+        <div class="container">
+            <h2>웹사이트</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+              laboriosam adipisci doloribus dolorem earum? Quisquam hic ullam facere
+              adipisci similique doloribus quia nulla nisi ipsum culpa, asperiores,
+              excepturi cum repellat recusandae reiciendis. Qui autem voluptatibus
+              eaque quisquam distinctio error impedit voluptates sit placeat,
+              consectetur porro a, odit delectus, aliquid dolor!
+            </p>
+        </div>
+        <script>
+            const hamburger = document.querySelector("#hamburger");
+            const navMenu = document.querySelector("#nav-menu");
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
+        </script>
+    </body>
+</html>
