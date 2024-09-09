@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html kang="ko">
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            .card {
+                width: 90%;
+                margin: auto;
+                box-shadow: 3px 3px 0 #ccc
+            }
+            .dropdown { /* 마우스 포인터 손가락으로 표시되게 설정 */
+                cursor: pointer;
+                border: 1px solid #000;
+                padding: 10px;
+            }
+            .dropdown-wrapper {
+                border-spacing: 10px;
+            }
+            .dropdown_content { /* 하위 내용이 보이지 않게 숨기기 */
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s;
+            }
+            .dropdown_title::before {
+                content: "+ ";
+            }
+            .dropdown.active .dropdown_title::before {
+                content: "- ";
+            }
+            .dropdown.active .dropdown_content {
+                max-height: 100vh; /* 최대 페이지 내에 보이게끔 크기 설정 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="dropdown-wrapper">
+                <div class="dropdown">
+                    <h3 class="dropdown_title">컬랍스 또는 아코디언 이라고 한다.</h3>
+                    <div class="dropdown_content">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur laboriosam adipisci doloribus dolorem earum? Quisquam hic ullam facere adipisci similique doloribus quia nulla nisi ipsum culpa, asperiores, excepturi cum repellat recusandae reiciendis. Qui autem voluptatibus eaque quisquam distinctio error impedit voluptates sit placeat, consectetur porro a, odit delectus, aliquid dolor!
+                        </p>
+                        <p></p>
+                    </div>
+                </div>
+      
+                <div class="dropdown">
+                    <h3 class="dropdown_title">메뉴 2</h3>
+                    <div class="dropdown_content">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur laboriosam adipisci doloribus dolorem earum? Quisquam hic ullam facere adipisci similique doloribus quia nulla nisi ipsum culpa, asperiores, excepturi cum repellat recusandae reiciendis. Qui autem voluptatibus eaque quisquam distinctio error impedit voluptates sit placeat, consectetur porro a, odit delectus, aliquid dolor!</p>
+                    </div>
+                </div>
+      
+                <div class="dropdown">
+                    <h3 class="dropdown_title">메뉴 3</h3>
+                    <div class="dropdown_content">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur laboriosam adipisci doloribus dolorem earum? Quisquam hic ullam facere adipisci similique doloribus quia nulla nisi ipsum culpa, asperiores, excepturi cum repellat recusandae reiciendis. Qui autem voluptatibus eaque quisquam distinctio error impedit voluptates sit placeat, consectetur porro a, odit delectus, aliquid dolor!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function handleDropdown(dropdown) {
+                // 1. 클릭한 대상의 active 클래스가 토글
+                dropdown.classList.toggle("active");
+                // 2. 클릭하지 않은 active가 붙어있는 클래스에서 active 클래스 삭제
+                const activeDropdowns = dropdown.parentElement.querySelectorAll(".active");
+                activeDropdowns.forEach(item => {
+                    if (item !== dropdown) item.classList.remove("active");
+                });
+            }
+            const dropdowns = document.querySelectorAll(".dropdown"); /* 같은 이름의 클래스가 있기 때문에 querySelectorAll로 모두 선택하고 forEach를 이용한 반복문 이용 */
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener("click", () => {
+                    handleDropdown(dropdown);
+                });
+            });
+        </script>
+    </body>
+</html>
