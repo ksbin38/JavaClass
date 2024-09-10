@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>insert title here</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            table {
+                width: 900px;
+            }
+            td {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            #box {
+                display: flex;
+                padding: 20px;
+                border: 1px solid black;
+                background: #fff;
+                width: 300px;
+                height: 300px;
+                transition: all 0.3s;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #btn {
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 5px;
+                margin-bottom: 30px;
+            }
+            #boxText {
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <label for="wid">너비 : </label>
+                    <input type="text" id="wid" name="wid" /> px
+                </td>
+                <td>
+                    <label for="hei">높이 : </label>
+                    <input type="text" id="hei" name="hei" /> px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="fSize">글자크기 : </label>
+                    <input type="text" id="fSize" name="fSize" /> px
+                </td>
+                <td>
+                    <label for="fWei">굵기 : </label>
+                    보통 <input type="radio" value="normal" name="fWei" checked />
+                    굵게 <input type="radio" value="bold" name="fWei" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="tColor">글자색 : </label>
+                    <input type="text" id="tColor" name="tColor" />
+                </td>
+                <td>
+                    <label for="bgColor">배경색</label>
+                    <input type="text" id="bgColor" name="bgColor" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="wAlign">가로정렬 : </label>
+                    왼쪽 <input type="radio" value="left" name="wAlign" checked />
+                    가운데 <input type="radio" value="center" name="wAlign" />
+                    오른쪽 <input type="radio" value="right" name="wAlign" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="hAlign">세로정렬 : </label>
+                    위 <input type="radio" value="flex-start" name="hAlign" checked />
+                    가운데 <input type="radio" value="center" name="hAlign" />
+                    아래 <input type="radio" value="flex-end" name="hAlign" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="boxText">출력 문자열 : </label>
+                    <input type="text" id="boxText" name="boxText" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" id="btn">적용하기</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="box"><p id="p"></p></div>
+                </td>
+            </tr>
+        </table>
+        
+        <script>
+            const btn = document.querySelector("#btn");
+            const box = document.querySelector("#box");
+            const p = document.querySelector("#p");
+            // 적용하기 눌렀을 때 box에 적용되는 함수 만들기
+            function doit() {
+                const w = document.querySelector("#wid").value;
+                const h = document.querySelector("#hei").value;
+                const fSize = document.querySelector("#fSize").value;
+                const tColor = document.querySelector("#tColor").value;
+                const bgColor = document.querySelector("#bgColor").value;
+                const boxText = document.querySelector("#boxText").value;
+                const fWei = document.querySelector('input[name="fWei"]:checked').value;
+                const wAlign = document.querySelector('input[name="wAlign"]:checked').value;
+                const hAlign = document.querySelector('input[name="hAlign"]:checked').value;
+
+                box.style.width = w + "px"; // 너비
+                box.style.height = `${h}px`; // 높이
+                p.style.fontSize = fSize + "px"; // 글씨크기
+                p.style.color = tColor; // 글자색
+                box.style.backgroundColor = bgColor; // 배경색
+                p.style.fontWeight = fWei;
+                box.style.justifyContent = wAlign;
+                box.style.alignItems = hAlign;
+
+                p.innerHTML += `${boxText}`;
+            }
+            btn.addEventListener("click", doit);
+        </script>
+    </body>
+</html>
