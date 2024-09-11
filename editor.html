@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>insert title here</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            form {
+                width: 600px;
+                margin: 0 auto;
+            }
+            .btnSubmit {
+                text-align: center;
+            }
+            .boxContainer {
+                position: relative;
+                display: flex;
+                justify-content: center;
+            }
+            .boxContainer #box {
+                display: flex;
+                background-color: #ccc;
+                border: 1px solid #000;
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="form">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="w">너비 : </label><input type="text" id="w"></td>
+                        <td><label for="h">높이 : </label><input type="text" id="h"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="f">글자크기 : </label><input type="text" id="f"></td>
+                        <td><label for="fw" >굵기 : </label>
+                            <label for="fw1">보통</label><input type="radio" name="fw" id="fw1" value="normal">
+                            <label for="fw2">굵게</label><input type="radio" name="fw" id="fw2" value="bold">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="fc">글자색 : </label><input type="text" id="fc"></td>
+                        <td><label for="bc">배경색 : </label><input type="text" id="bc"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="wAlign">가로정렬 : </label>
+                            <label for="wAlign1">왼쪽</label><input type="radio" name="wAlign" id="wAlign1" value="left">
+                            <label for="wAlign2">가운데</label><input type="radio" name="wAlign" id="wAlign2" value="center">
+                            <label for="wAlign3">오른쪽</label><input type="radio" name="wAlign" id="wAlign3" value="right">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="hAlign">세로정렬 : </label>
+                            <label for="hAlign1">위</label><input type="radio" name="hAlign" id="hAlign1" value="flex-start">
+                            <label for="hAlign2">가운데</label><input type="radio" name="hAlign" id="hAlign2" value="center">
+                            <label for="hAlign3">아래</label><input type="radio" name="hAlign" id="hAlign3" value="flex-end">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="boxText">출력 문자열 : </label><input type="text" id="boxText"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="btnSubmit">
+                <button type="submit" id="btn">적용하기</button>
+            </div>
+        </form>
+        <div class="boxContainer">
+            <div id="box"></div>
+        </div>
+        <script>
+            document.querySelector("#form").addEventListener("submit", function (e) {
+                e.preventDefault(); // submit 버튼 클릭 시 새로고림 방지(이걸 막아야 박스가 만들어지는걸 볼수있음)
+                const w = document.querySelector("#w").value;
+                const h = document.querySelector("#h").value;
+                const f = document.querySelector("#f").value;
+                const fc = document.querySelector("#fc").value;
+                const bc = document.querySelector("#bc").value;
+                const boxText = document.querySelector("#boxText").value;
+                const fw = document.querySelector('input[name="fw"]:checked').value;
+                const wAlign = document.querySelector('input[name="wAlign"]:checked').value;
+                const hAlign = document.querySelector('input[name="hAlign"]:checked').value;
+
+                const box = document.querySelector("#box");
+
+                box.style.width = w + "px"; // 너비
+                box.style.height = `${h}px`; // 높이
+                box.style.fontSize = f + "px"; // 글씨크기
+                box.style.color = fc; // 글자색
+                box.style.backgroundColor = bc; // 배경색
+                box.style.fontWeight = fw;
+                box.style.justifyContent = wAlign;
+                box.style.alignItems = hAlign;
+
+                box.innerHTML += boxText;
+            })
+        </script>
+    </body>
+</html>
