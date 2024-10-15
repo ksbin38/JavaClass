@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign In</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      form {
+        background-color: #fff;
+        color: black;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        padding: 30px;
+        width: 500px;
+      }
+      form h2 {
+        color: black;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      label {
+        color: black;
+        display: block;
+      }
+      input {
+        background-color: transparent;/*투명*/
+        border-style: hidden;
+        border-bottom: 2px solid #ccc;
+        padding: 10px 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        display: block;
+        width: 100%;
+        border-radius: 20px;
+        font-size: 18px;
+        padding: 10px;
+        text-align: center;
+        border: 0;
+        margin-top: 20px;
+      }
+      #signIn {
+        background-color: orange;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      #signIn a {
+        color: white;
+        text-decoration: none;
+      }
+      .personal, .idPw {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        color: black;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        padding: 10px;
+        width: 100%;
+      }
+      .usingNumber, .available, .usingId, .pwLength, .pwEnough, .pwIncorrect {
+        margin-left: 10px;
+        color: red;
+      }
+      .available {
+        color: limegreen;
+      }
+      .idPw {
+        margin-top: 20px;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="signinForm">
+      <h2 class="signin">회원가입</h2>
+      <div class="personal">
+        <input
+          type="text"
+          name="pName"
+          class="pName"
+          id="pName"
+          placeholder="이름을 입력하세요."
+          required
+        />
+        <input
+          type="text"
+          name="birth"
+          class="birth"
+          id="birth"
+          placeholder="생년월일을 입력하세요."
+          required
+        />
+        <input
+          type="text"
+          name="pNumber"
+          class="pNumber"
+          id="pNumber"
+          placeholder="휴대폰 번호를 입력하세요. ('-' 포함)"
+          required
+        />
+      </div>
+      <div class="usingNumber hide" id="usingNumber">* 이미 등록된 휴대폰 번호입니다.</div>
+      <div class="idPw">
+        <input
+          type="text"
+          name="newId"
+          class="newId"
+          id="newId"
+          placeholder="아이디를 입력하세요."
+          required
+        />
+        <input
+          type="password"
+          name="newPw"
+          class="newPw"
+          id="newPw"
+          placeholder="비밀번호를 입력하세요."
+          required
+        />
+        <input
+          type="password"
+          name="newPw2"
+          class="newPw2"
+          id="newPw2"
+          placeholder="비밀번호를 다시 입력하세요."
+          required
+        />
+      </div>
+      <div class="available hide" id="available">* 사용 가능한 아이디입니다.</div>
+      <div class="usingId hide" id="usingId">* 사용 중인 아이디입니다.</div>
+      <div class="pwEnough hide" id="pwEnough">* 6자리 이상의 비밀번호를 입력하고, 숫자와 문자를 섞어주세요.</div>
+      <div class="pwIncorrect hide" id="pwIncorrect">* 비밀번호가 일치하지 않습니다.</div>
+      <button id="signIn">가입완료</button>
+    </form>
+    <script>
+      const newId = document.querySelector("#newId");
+      const newPw = document.querySelector("#newPw");
+      const newPw2 = document.querySelector("#newPw2");
+      
+      const usingNumber = document.querySelector(".usingNumber");
+      const available = document.querySelector(".available");
+      const usingId = document.querySelector(".usingId");
+      const pwEnough = document.querySelector(".pwEnough");
+      const pwIncorrect = document.querySelector(".pwIncorrect");
+      
+      // 비밀번호를 숫자와 문자의 조합을 했는지, 6자 이상 입력했는지 체크
+      const pwCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/;
+
+      function passwordCheck(pw1, pw2) {
+        return pw1 === pw2;
+      }
+
+      newPw.onkeyup = function() {
+        if (newPw.value.length !== 0) {
+          // 비밀번호를 입력했지만 조건에 맞지 않을 때
+          if (pwCheck.test(newPw) == false) {
+            pwEnough.classList.remove('hide');
+          }
+          else  {
+            return;
+          }
+        } else {
+          return;
+        }
+      }
+    </script>
+  </body>
+</html>
