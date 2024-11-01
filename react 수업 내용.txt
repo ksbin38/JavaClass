@@ -1,0 +1,24 @@
+http://localhost:8080/api/auth/register
+POST
+{
+	"username": "user",
+	"email": "user@user.com",
+	"password": "user",
+	"name": "사용자"
+}
+
+http://localhost:8080/api/auth/login
+POST
+{
+    "username": "user",
+    "password": "user",
+    "deviceInfo": {
+        "deviceId": "1",
+        "deviceType": "DEVICE_TYPE_WINDOWS",
+        "notificationToken": "111"
+    }
+}
+
+http://localhost:8080/api/user/me
+GET
+login 했을 때 accessToken값을 복사 -> GET>Authorization>Bearer Token에 붙여넣고 send
